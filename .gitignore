@@ -1,0 +1,31 @@
+# Setup/build artifacts — never commit these
+_index_backup.html
+git-setup.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (if you ever add a build step)
+node_modules/
+dist/
+
+# Environment files
+.env
+.env.local
+
+# Temp files
+*.tmp
+*.swp
+*~
