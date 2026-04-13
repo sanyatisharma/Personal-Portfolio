@@ -3,63 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanyati Sharma — Portfolio</title>
+<title>Sanyati Sharma — Builder, Analyst, Strategist</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── Design Tokens ── */
   :root {
-    --gold: #D4A037;
-    --gold-light: #F5E6C4;
-    --coral: #C75B3F;
-    --charcoal: #1B1B2F;
-    --slate: #2D2D44;
-    --cream: #FDF8F2;
-    --warm-gray: #A09B93;
-    --light-gray: #E8E4DE;
-    --white: #FFFFFF;
+    --gold: #D4A037; --gold-light: #F5E6C4; --coral: #C75B3F;
+    --charcoal: #1B1B2F; --slate: #2D2D44; --cream: #FDF8F2;
+    --warm-gray: #A09B93; --light-gray: #E8E4DE; --white: #FFFFFF;
     --font-serif: 'DM Serif Display', Georgia, serif;
     --font-sans: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font-sans);
-    background: var(--cream);
-    color: var(--charcoal);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── Navigation ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.25rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .nav-logo {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--charcoal);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
+  body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; mix-blend-mode: difference; }
+  nav.scrolled { mix-blend-mode: normal; background: rgba(253,248,242,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--light-gray); padding: 0.75rem 3rem; }
+  .nav-logo { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; color: var(--white); text-decoration: none; transition: color 0.3s; }
+  nav.scrolled .nav-logo { color: var(--charcoal); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--charcoal);
-    text-decoration: none;
-  }
+  .nav-links a { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--white); text-decoration: none; transition: color 0.3s; }
+  nav.scrolled .nav-links a { color: var(--charcoal); }
+  .hero { min-height: 100vh; background: var(--charcoal); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 4rem 5rem; position: relative; z-index: 2; }
+  .hero-tag { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-tag::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: var(--font-serif); font-size: clamp(3rem, 5.5vw, 5.5rem); color: var(--cream); line-height: 1.05; margin-bottom: 2rem; }
+  .hero h1 .accent { color: var(--gold); }
+  .hero-description { font-size: 1.1rem; color: var(--warm-gray); line-height: 1.7; max-width: 480px; margin-bottom: 3rem; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: var(--gold); color: var(--charcoal); font-weight: 600; font-size: 0.85rem; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; }
+  .btn-primary:hover { background: var(--coral); color: var(--white); transform: translateY(-2px); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.75rem; background: transparent; color: var(--cream); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(253,248,242,0.2); border-radius: 4px; transition: all 0.3s ease; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-cta-row { display: flex; gap: 1.25rem; align-items: center; }
+  .about { background: var(--cream); padding: 7rem 5rem; }
+  .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem; }
+  .section-number { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; }
+  .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3.2rem); color: var(--charcoal); line-height: 1.1; }
+  .section-line { flex: 1; height: 1px; background: var(--light-gray); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .about-text p { font-size: 1.05rem; line-height: 1.8; color: var(--charcoal); margin-bottom: 1.5rem; }
+  .marquee-section { background: var(--charcoal); padding: 1.75rem 0; overflow: hidden; }
+  .marquee-track { display: flex; animation: marquee 20s linear infinite; width: max-content; }
+  .marquee-item { font-family: var(--font-serif); font-size: 1.3rem; color: var(--cream); white-space: nowrap; padding: 0 2.5rem; opacity: 0.5; }
+  .marquee-item .sep { color: var(--gold); margin-left: 2.5rem; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
-<nav>
+<nav id="nav">
   <a href="#" class="nav-logo">SANYATI.DEV</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -69,6 +63,50 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-<!-- Sections coming soon -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Data &amp; Business Analyst</div>
+    <h1>I build systems<br>that make data<br><span class="accent">do something.</span></h1>
+    <p class="hero-description">Analyst and builder with a track record of turning complex data into clear outcomes. End-to-end analytics on 20K+ records, production full-stack applications, and executive-level insights that have moved revenue and decisions.</p>
+    <div class="hero-cta-row">
+      <a href="#projects" class="btn-primary">See My Work &darr;</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Building things that matter has always been my compass. Whether it's an analytics pipeline that surfaces demand patterns across 20K+ records, an executive dashboard translating KPIs into real-time business decisions, or a full-stack app shipped from schema to cloud — I care deeply about the system behind the impact.</p>
+      <p>I've spent the last few years moving fluidly between data and delivery: leading end-to-end analysis that contributed to a 10% revenue lift, producing executive-ready stakeholder reports on alumni and employer engagement, and representing my institution at the Harvard × MIT Sloan TechNatSec Conference.</p>
+      <p>What drives me isn't any single discipline — it's the intersection. I'm at my best when a well-designed query powers a decision, when a technical system genuinely serves the people using it, and when the work I do changes how an organization thinks and acts.</p>
+    </div>
+  </div>
+</section>
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Data Analytics <span class="sep">/</span></span>
+    <span class="marquee-item">Machine Learning <span class="sep">/</span></span>
+    <span class="marquee-item">KPI Development <span class="sep">/</span></span>
+    <span class="marquee-item">Business Intelligence <span class="sep">/</span></span>
+    <span class="marquee-item">Full-Stack Engineering <span class="sep">/</span></span>
+    <span class="marquee-item">Data Analytics <span class="sep">/</span></span>
+    <span class="marquee-item">Machine Learning <span class="sep">/</span></span>
+    <span class="marquee-item">KPI Development <span class="sep">/</span></span>
+  </div>
+</div>
+<!-- Experience, Projects, Leadership, Contact coming next -->
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
