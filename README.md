@@ -1,40 +1,38 @@
-# Sanyati Sharma — Personal Portfolio
+# Personal Portfolio
 
-A personal portfolio website built to reflect my work as a data analyst, full-stack builder, and strategic thinker. Designed for recruiters across analytics, engineering, and product roles.
+This is my personal portfolio — a space where I bring together the things I care about building: data-driven systems, intuitive interfaces, and work that actually has impact.
 
-## 🔗 Live Site
-> **[sanyatisharma.github.io/Personal-Portfolio](https://sanyatisharma.github.io/Personal-Portfolio)**
+I wanted this to feel less like a resume and more like a product, Something you can explore, not just read.
+
+## What this includes
+
+- Projects across data, full-stack development, and systems design  
+- Work focused on turning ambiguity into structured, usable outputs  
+- A mix of technical builds and real-world, impact-driven work  
+- A more personal layer — how I work, lead, and collaborate in teams  
+
+## Featured Work
+
+- PrepareUp — a platform focused on structuring complex workflows into simple, usable systems  
+- Client Assistance & Equipment Loaning Tracker — built to streamline operations and improve tracking efficiency  
+- MarketMind — data-driven insights and analytics platform  
+- NYC Taxi Trip Duration Prediction — applied machine learning for real-world prediction problems  
+
+## How I think about building
+
+I like working at the intersection of:
+- data → making sense of messy information  
+- systems → structuring things so they actually work  
+- people → building for real use, not just technical output  
 
 ## Tech
-- HTML, CSS, JavaScript — zero dependencies, no build step
-- Google Fonts: DM Serif Display · Inter · JetBrains Mono
-- Fully responsive, single-file architecture
 
-## Sections
-| Section | Description |
-|---|---|
-| Hero | Positioning statement + key stat |
-| About | Who I am, what I've worked on |
-| Experience | Work history with impact metrics |
-| Projects | PrepareUp · Client Tracker · MarketMind · NYC Taxi ML |
-| Leadership | AI & FinTech Club · STARS Ignite · Indian Cultural Club |
-| Contact | Email, LinkedIn, GitHub + contact form |
+Built using a simple, clean frontend setup with a focus on performance and interaction.
 
-## Project Structure
-```
-Portfolio/
-├── index.html          # Full single-file portfolio
-├── README.md
-├── .gitignore
-└── assets/
-    └── images/         # Leadership & project photos go here
-```
+## Live Site
 
-## Adding Photos
-The leadership section supports click-to-upload photos directly in the browser. To persist photos across sessions, save your images to `assets/images/` and update the `<img>` `src` attributes in `index.html`.
+View Portfolio
 
-## Deploying via GitHub Pages
-1. Push this repo to GitHub
-2. Go to **Settings → Pages** in your repo
-3. Set source to `main` branch, root `/`
-4. Your site will be live at `https://sanyatisharma.github.io/Personal-Portfolio`
+---
+
+This is an evolving project — I keep refining it as I build more and learn more.
