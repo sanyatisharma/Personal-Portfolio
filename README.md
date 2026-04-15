@@ -6,7 +6,7 @@ A personal portfolio website built to reflect my work as a data analyst, full-st
 > _Deploy link goes here after GitHub Pages setup (see below)_
 
 ## Tech
-- Vanilla HTML, CSS, JavaScript — zero dependencies, no build step
+- HTML, CSS, JavaScript — zero dependencies, no build step
 - Google Fonts: DM Serif Display · Inter · JetBrains Mono
 - Fully responsive, single-file architecture
 
@@ -39,5 +39,3 @@ The leadership section supports click-to-upload photos directly in the browser. 
 3. Set source to `main` branch, root `/`
 4. Your site will be live at `https://sanyatisharma.github.io/portfolio`
 
----
-Built with [Claude](https://claude.ai) · © 2026 Sanyati Sharma
