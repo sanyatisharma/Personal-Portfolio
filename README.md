@@ -3,7 +3,7 @@
 A personal portfolio website built to reflect my work as a data analyst, full-stack builder, and strategic thinker. Designed for recruiters across analytics, engineering, and product roles.
 
 ## 🔗 Live Site
-> _Deploy link goes here after GitHub Pages setup (see below)_
+(https://sanyatisharma.github.io/Personal-Portfolio/)
 
 ## Tech
 - HTML, CSS, JavaScript — zero dependencies, no build step
