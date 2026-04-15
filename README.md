@@ -2,7 +2,10 @@
 
 This is my personal portfolio — a space where I bring together the things I care about building: data-driven systems, intuitive interfaces, and work that actually has impact.
 
-I wanted this to feel less like a resume and more like a product, Something you can explore, not just read.
+I wanted this to feel less like a resume and more like a product. Something you can explore, not just read.
+
+## 🔗 Live Site
+> **[sanyatisharma.github.io/Personal-Portfolio](https://sanyatisharma.github.io/Personal-Portfolio)**
 
 ## What this includes
 
@@ -28,10 +31,6 @@ I like working at the intersection of:
 ## Tech
 
 Built using a simple, clean frontend setup with a focus on performance and interaction.
-
-## Live Site
-
-(https://sanyatisharma.github.io/Personal-Portfolio/)
 
 ---
 
