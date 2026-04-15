@@ -897,6 +897,52 @@
     transform: translateX(4px);
   }
 
+  /* Project impact line */
+  .project-impact {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(212, 160, 55, 0.07);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    transition: border-color 0.35s ease, background 0.35s ease;
+  }
+
+  .project-card:hover .project-impact {
+    border-color: var(--coral);
+    background: rgba(199, 91, 63, 0.06);
+  }
+
+  /* Enhanced card hover — top accent bar via inset shadow */
+  .project-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 24px 64px rgba(27, 27, 47, 0.1),
+                inset 0 2px 0 var(--gold);
+    transform: translateY(-5px);
+  }
+
+  /* CTA reveal — underline sweep on hover */
+  .project-link {
+    position: relative;
+    padding-bottom: 1px;
+  }
+
+  .project-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--coral);
+    transition: width 0.3s ease;
+  }
+
+  .project-link:hover::after { width: 100%; }
+
   /* ===================== MARQUEE ===================== */
   .marquee-section {
     background: var(--charcoal);
@@ -1434,8 +1480,9 @@
   /* ===================== ANIMATIONS ===================== */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(22px);
+    transition: opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .reveal.visible {
@@ -1443,9 +1490,10 @@
     transform: translateY(0);
   }
 
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
 
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 1024px) {
@@ -1645,7 +1693,7 @@
   <div class="project-grid">
 
     <!-- Project 1: PrepareUp -->
-    <div class="project-card reveal">
+    <div class="project-card reveal reveal-delay-1">
       <div class="project-visual">
         <div class="mock-waveform">
           <div class="waveform-label">PrepareUp · Generating study guide...</div>
@@ -1668,6 +1716,7 @@
       <div class="project-info">
         <div class="project-type">Full-Stack · AI Product</div>
         <h3 class="project-name">PrepareUp</h3>
+        <p class="project-impact">Shipped a full-stack AI product end-to-end — automating the path from raw course content to structured, recruiter-tested study guides with measurable engagement gains.</p>
         <p class="project-desc">An AI-driven web app that converts course materials and Discord discussions into structured, digestible study guides using a GPT-powered content pipeline. Built with OAuth2 authentication, AWS S3 storage, and rubric-based content mapping. User engagement tracked via EDA to drive data-informed feature prioritization.</p>
         <div class="project-stack">
           <span class="stack-tag">React</span>
@@ -1683,7 +1732,7 @@
     </div>
 
     <!-- Project 2: Client Tracker -->
-    <div class="project-card reveal">
+    <div class="project-card reveal reveal-delay-2">
       <div class="project-visual">
         <div class="mock-tracker">
           <div class="tracker-header">
@@ -1716,6 +1765,7 @@
       <div class="project-info">
         <div class="project-type">Full-Stack · Operations Tool</div>
         <h3 class="project-name">Client Assistance &amp; Equipment Loaning Tracker</h3>
+        <p class="project-impact">Eliminated manual tracking errors by 30% — replacing paper-based workflows with a real-time system that gave university staff instant, role-aware visibility across all active loans.</p>
         <p class="project-desc">A web-based operations tracker replacing error-prone manual workflows with a real-time digital system for a university business institution. Reduced tracking errors by 30% and gave staff instant visibility into equipment loans and client assistance requests through a clean, role-aware interface.</p>
         <div class="project-stack">
           <span class="stack-tag">Flask</span>
@@ -1729,7 +1779,7 @@
     </div>
 
     <!-- Project 3: MarketMind -->
-    <div class="project-card reveal">
+    <div class="project-card reveal reveal-delay-3">
       <div class="project-visual">
         <div class="mock-dashboard" style="background:#0D1117">
           <div class="mock-dots">
@@ -1752,6 +1802,7 @@
       <div class="project-info">
         <div class="project-type">Data / FinTech · Analytics Tool</div>
         <h3 class="project-name">MarketMind</h3>
+        <p class="project-impact">Distilled complex financial signals into clear, stakeholder-ready insights — built analytics-first, from data ingestion to a visualization layer designed for fast, confident decisions.</p>
         <p class="project-desc">A market intelligence tool built to analyze financial signals and surface actionable insights for investment-adjacent decision-making. Designed with an analytics-first architecture — integrating data ingestion, signal processing, and a visualization layer that distills complexity into clear, stakeholder-ready outputs.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
@@ -1765,7 +1816,7 @@
     </div>
 
     <!-- Project 4: NYC Taxi -->
-    <div class="project-card reveal">
+    <div class="project-card reveal reveal-delay-4">
       <div class="project-visual">
         <div class="mock-scatter">
           <div class="scatter-header">
@@ -1796,6 +1847,7 @@
       <div class="project-info">
         <div class="project-type">Machine Learning · Data Science</div>
         <h3 class="project-name">NYC Taxi Trip Duration Prediction</h3>
+        <p class="project-impact">Achieved R² near 1.0 and a 70% reduction in prediction error over baseline — trained on 3.4M+ real-world records with a full ML lifecycle from raw ingestion to cross-validated deployment.</p>
         <p class="project-desc">End-to-end ML pipeline trained on 3.4M+ records to predict taxi trip duration. Applied cyclical time feature engineering, hyperparameter tuning, and k-NN regression — achieving R² near 1.0 and a 70% reduction in prediction error over baseline. Full lifecycle: raw data ingestion, visual diagnostics, and cross-validated evaluation.</p>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
