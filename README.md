@@ -3,11 +3,7 @@
 A personal portfolio website built to reflect my work as a data analyst, full-stack builder, and strategic thinker. Designed for recruiters across analytics, engineering, and product roles.
 
 ## 🔗 Live Site
-<<<<<<< HEAD
-(https://sanyatisharma.github.io/Personal-Portfolio/)
-=======
 > **[sanyatisharma.github.io/Personal-Portfolio](https://sanyatisharma.github.io/Personal-Portfolio)**
->>>>>>> dd4f7df (docs: update README with live site URL)
 
 ## Tech
 - HTML, CSS, JavaScript — zero dependencies, no build step
@@ -42,4 +38,3 @@ The leadership section supports click-to-upload photos directly in the browser. 
 2. Go to **Settings → Pages** in your repo
 3. Set source to `main` branch, root `/`
 4. Your site will be live at `https://sanyatisharma.github.io/Personal-Portfolio`
-
