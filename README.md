@@ -31,7 +31,7 @@ Built using a simple, clean frontend setup with a focus on performance and inter
 
 ## Live Site
 
-View Portfolio
+(https://sanyatisharma.github.io/Personal-Portfolio/)
 
 ---
 
