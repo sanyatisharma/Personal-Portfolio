@@ -21,6 +21,11 @@ npm-debug.log*
 node_modules/
 dist/
 
+# Next.js build cache (NOT the exported output — _next/ and projects/ should be committed)
+projects-app/.next/
+projects-app/out/
+projects-app/node_modules/
+
 # Environment files
 .env
 .env.local
