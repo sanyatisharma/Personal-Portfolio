@@ -39,83 +39,82 @@ export const projects: Project[] = [
     slug: 'prepareup',
     name: 'PrepareUp',
     type: 'Full-Stack · AI Product',
-    tagline: 'Course content to structured study guides — automatically.',
+    tagline: 'Listen, Revise, Retain.',
     videoId: 'FMfKwNMo59U',
     overview:
-      'PrepareUp is an AI-driven web application that converts course materials and Discord discussions into structured, digestible study guides. Built with a GPT-4 powered content pipeline, it maps raw input to rubric-aligned outputs and delivers them through a clean, authenticated interface — making exam prep systematic instead of scattered.',
+      'PrepareUp is an AI-integrated study platform built by students, for students. Upload your notes or connect your class Discord — then choose how you want to learn: podcast, flashcards, quiz, study guide, or a live AI voice tutor. One set of content generates every format simultaneously. No switching between tools, no re-uploading. Built with OpenAI, React, Flask, and AWS, PrepareUp adapts study to the way you actually learn.',
     problem: [
-      'Students spend hours manually synthesizing content from PDFs, slides, and Discord with no unified workflow',
-      'Valuable insights buried in Discord threads are nearly impossible to surface and organize at scale',
-      'Existing note-taking tools don\'t bridge the gap between unstructured input and rubric-aligned study output',
-      'No feedback loop existed to understand which content areas students actually engaged with most',
+      'Students juggle scattered materials across PDFs, slides, and Discord with no unified way to turn them into active study formats',
+      'Passive reading doesn\'t help information stick — students need varied, active review methods that fit into their real schedule',
+      'Existing tools are format-specific: one app for flashcards, another for quizzes, another for summaries — no platform does it all from one upload',
+      'Discord class discussions contain valuable context that disappears into chat history, never making it into study materials',
     ],
     solution:
-      'Built a full-stack application where users upload course materials and connect Discord servers. A Flask backend orchestrates a GPT-4 content pipeline that reads, chunks, and maps inputs against course rubrics to produce structured study guides. Files are stored in AWS S3 and served through a React frontend with OAuth2 authentication. User engagement is captured and analyzed via EDA to drive feature prioritization.',
+      'Built a full-stack platform where users upload course files (PDFs, docs, slides) or connect a Discord server and channel. An OpenAI-powered pipeline ingests the content and generates multiple study formats in parallel: a podcast-style audio lesson in host-and-guest format, auto-generated flashcards, adaptive quizzes with scoring and explanations, and Voice Learning — a live AI tutor that answers questions grounded entirely in the user\'s own notes. Everything is accessible from a single dashboard, on any device.',
     features: [
       {
-        title: 'GPT-4 Content Pipeline',
+        title: 'Podcast Mode',
         description:
-          'Processes raw course material and Discord threads through rubric-aware prompts to produce structured, exam-ready study guides.',
-        icon: '🤖',
+          'Converts notes into a natural host-and-guest audio conversation with a full transcript. Listen during your commute, workout, or anywhere away from a screen.',
+        icon: '🎙️',
+      },
+      {
+        title: 'Voice Learning — AI Tutor',
+        description:
+          'A live voice interface powered by OpenAI. Ask questions, get explanations, and go deeper in real time — all grounded in your own uploaded notes, not generic AI responses.',
+        icon: '🗣️',
+      },
+      {
+        title: 'Flashcard Generator',
+        description:
+          'AI extracts key concepts, definitions, and facts from uploaded content and generates review-ready flashcards instantly — no manual card creation.',
+        icon: '🃏',
+      },
+      {
+        title: 'Mock Quiz & Test Mode',
+        description:
+          'Set the number of questions and difficulty level. Get scored immediately with the correct answers and explanations for every question ready to review.',
+        icon: '✅',
       },
       {
         title: 'Discord Integration',
         description:
-          'Connects to Discord servers to ingest discussion threads, surface key insights, and fold them into study output automatically.',
+          'Connect a server and channel and PrepareUp pulls in class discussions automatically — turning live conversations and key insights into structured study material.',
         icon: '💬',
       },
       {
-        title: 'Rubric-Based Mapping',
+        title: 'One Upload, Every Format',
         description:
-          'Content is mapped to course rubrics and learning objectives, ensuring outputs are targeted to what actually gets assessed — not just comprehensive summaries.',
-        icon: '🗂️',
-      },
-      {
-        title: 'AWS S3 Storage',
-        description:
-          'Persistent storage for uploaded materials and generated guides — accessible across sessions and shareable with peers.',
-        icon: '☁️',
-      },
-      {
-        title: 'OAuth2 Authentication',
-        description:
-          'Secure user accounts with OAuth2, protecting uploaded materials and personalizing each user\'s guide history.',
-        icon: '🔐',
-      },
-      {
-        title: 'Engagement Analytics',
-        description:
-          'Tracked user engagement patterns via EDA to understand which features drove retention and inform the product roadmap.',
-        icon: '📊',
+          'Upload PDFs, docs, and slides in bulk. A single submission generates podcasts, flashcards, quizzes, and study guides simultaneously — no re-uploading per format.',
+        icon: '⚡',
       },
     ],
     stack: [
       { name: 'React', category: 'Frontend' },
       { name: 'Flask', category: 'Backend' },
-      { name: 'PostgreSQL', category: 'Database' },
-      { name: 'AWS S3', category: 'Cloud' },
-      { name: 'ChatGPT API', category: 'AI/ML' },
-      { name: 'OAuth2', category: 'Backend' },
       { name: 'Python', category: 'Backend' },
-      { name: 'Pandas', category: 'Data' },
+      { name: 'PostgreSQL', category: 'Database' },
+      { name: 'OpenAI API', category: 'AI/ML' },
+      { name: 'AWS', category: 'Cloud' },
+      { name: 'Discord API', category: 'Backend' },
     ],
     impact: [
-      'Automated study guide generation from raw course materials — eliminating hours of manual synthesis per exam cycle',
-      'EDA on engagement patterns directly shaped the product roadmap, prioritizing features with the highest retention impact',
-      'Rubric-aligned outputs meant guides were targeted to assessed content, not just everything in the syllabus',
-      'Discord integration became the primary differentiator — users cited it as the feature that made the tool genuinely different',
+      'One upload generates podcasts, flashcards, quizzes, and a live AI tutor simultaneously — replacing four separate study tools with one platform',
+      'Voice Learning mode delivers real-time, personalized tutoring grounded in the user\'s own content — not generic AI responses',
+      'Discord integration captures class discussion context that would otherwise be lost, turning live conversations into structured study material',
+      'Podcast mode makes studying genuinely portable — lecture content accessible during commutes and daily routines, not just at a desk',
     ],
     learned: {
       technical: [
-        'GPT-4 prompt engineering for structured output — temperature tuning, few-shot prompting, and output validation',
-        'OAuth2 implementation including token refresh flows and secure session handling from scratch',
-        'S3 file lifecycle management: upload handling, versioning, and pre-signed URL delivery',
-        'Flask architecture for async content pipelines with clean separation between ingestion and generation',
+        'OpenAI API prompt engineering across multiple output formats — different strategies for podcast narration, quiz generation, and flashcard extraction from the same input',
+        'Real-time voice interface architecture: streaming AI responses with low latency while keeping outputs grounded in user-specific context',
+        'Multi-file ingestion pipeline handling PDFs, docs, and slides with consistent normalization before the generation layer',
+        'AWS infrastructure for audio generation, storage, and delivery — managing file lifecycle for generated podcast episodes at scale',
       ],
       product: [
-        'EDA as a product tool — engagement data surfaced which features users actually used vs. what we assumed they needed',
-        'The gap between "technically works" and "actually usable" — rubric mapping only landed when made explicit in the UI',
-        'Discord integration was underrated at the start: the features that feel niche often have the highest impact for the right users',
+        'Building for real study habits — designing around how students actually study (commutes, last-minute cramming, varied formats) changed every product decision',
+        'Voice Learning was the hardest feature to build and the most differentiated — the highest-complexity features often have the highest user value',
+        '"One upload, multiple formats" sounds simple but required careful architecture to make each output format genuinely good, not just technically functional',
       ],
     },
     access: {
