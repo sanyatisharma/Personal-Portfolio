@@ -116,77 +116,76 @@ export const projects: Project[] = [
     slug: 'client-tracker',
     name: 'Client Assistance & Equipment Loaning Tracker',
     type: 'Full-Stack · Operations Tool',
-    tagline: 'Real-time visibility into equipment loans — replacing manual workflows entirely.',
+    tagline: 'From manual chaos to structured, role-aware equipment management.',
     overview:
-      'A web-based operations tracker built for a university business institution to replace error-prone paper-based equipment management. The system gives staff instant, role-aware visibility into all active loans and client assistance requests — reducing tracking errors by 30% and eliminating the manual reconciliation work that consumed staff time.',
+      'A full-stack internal system built for Georgia State University that replaces manual tech equipment tracking with a structured digital workflow. It covers the full loan lifecycle — inventory management, loan requests, approvals, returns, and reporting — through a role-based interface that gives Admins, Staff, and Borrowers exactly what they need and nothing they don\'t. Built with React, Node.js/Express, and SQLite, it was designed to be immediately usable by non-technical staff from day one.',
     problem: [
-      'Paper-based tracking led to lost equipment, double-bookings, and zero visibility into real-time loan status',
-      'Staff spent significant time on manual reconciliation instead of actual client service',
-      'No audit trail existed — when equipment went missing, there was no way to trace it back',
-      'Different staff roles needed different views, which a shared spreadsheet couldn\'t provide',
+      'Manual paper-based tracking created lost equipment, double-bookings, and zero real-time visibility into loan status',
+      'No structured approval workflow — loan requests were handled ad-hoc, creating inconsistency and accountability gaps',
+      'No audit trail meant there was no way to trace equipment when it went missing or was returned late',
+      'Different user types (admin, staff, borrowers) needed completely different interfaces — a shared spreadsheet couldn\'t serve any of them well',
     ],
     solution:
-      'Designed and built a Flask web application with a MySQL schema optimized for loan tracking. A REST API handles all CRUD operations for equipment, clients, and loan records. The frontend delivers role-aware interfaces — front desk staff see active loans and quick-return flows; admins see full audit logs and overdue reports. Every action is timestamped and attributed, creating a permanent audit trail.',
+      'Built a full-stack web application with a clean separation between a React frontend, a Node.js/Express REST API, and a SQLite database. JWT authentication gates every route and determines which UI each role sees. The backend models the full loan lifecycle as explicit state transitions — preventing invalid actions at the API level, not just the UI.',
+    solutionFlow: 'Request → Approve / Deny → Return',
     features: [
       {
-        title: 'Real-Time Equipment Tracking',
+        title: 'Real-Time Dashboard',
         description:
-          'Live status for all equipment — checked out, available, overdue — visible across all staff terminals the moment a record updates.',
-        icon: '📡',
+          'Live stats on active inventory, pending loan requests, and overdue items — updated on every action. Admins see the full picture; staff see what needs their attention.',
+        icon: '📊',
       },
       {
-        title: 'Role-Based Access',
+        title: 'Excel Import / CSV Export',
         description:
-          'Front desk view for quick loan creation and returns; admin view for full audit logs, overdue management, and reporting.',
-        icon: '👥',
+          'Admins bulk-import inventory via Excel and export overdue reports and loan history as CSV — meeting real administrative workflows without requiring technical knowledge from staff.',
+        icon: '📂',
       },
       {
-        title: 'Client Request Management',
+        title: 'Role-Based Access Control',
         description:
-          'Tracks client assistance requests alongside equipment loans in a unified interface — no context-switching between systems.',
-        icon: '📋',
+          'Three distinct roles — Admin, Staff, Borrower — each with a tailored UI, gated tabs, and scoped API permissions. JWT handles authentication; bcrypt handles password security. Staff can create loan applications on behalf of students. Admins control inventory and user management.',
+        icon: '🔐',
+        emphasis: 'featured',
       },
       {
-        title: 'Full Audit Trail',
+        title: 'Loan Workflow Engine',
         description:
-          'Every loan action is logged — who checked out what, when, and who processed the return. Accountability built in from day one.',
-        icon: '🔍',
-      },
-      {
-        title: 'Overdue Alerts',
-        description:
-          'Automatic flagging of overdue equipment with escalation visibility for admins — no more manually chasing returns.',
-        icon: '⚠️',
+          'The core of the system. Borrowers submit equipment requests; Staff review and approve or deny; returns are logged and timestamped. Every state transition is explicit, auditable, and irreversible in the right places — creating a permanent accountability trail for every item in the system. Overdue tracking and dashboard alerts surface items that need action before they become problems.',
+        icon: '🔄',
+        emphasis: 'hero',
       },
     ],
     stack: [
-      { name: 'Flask', category: 'Backend' },
-      { name: 'MySQL', category: 'Database' },
-      { name: 'REST API', category: 'Backend' },
-      { name: 'Python', category: 'Backend' },
-      { name: 'HTML/CSS', category: 'Frontend' },
-      { name: 'JavaScript', category: 'Frontend' },
+      { name: 'React.js', category: 'Frontend' },
+      { name: 'Tailwind CSS', category: 'Frontend' },
+      { name: 'Vite', category: 'Frontend' },
+      { name: 'Node.js', category: 'Backend' },
+      { name: 'Express.js', category: 'Backend' },
+      { name: 'JWT', category: 'Backend' },
+      { name: 'SQLite', category: 'Database' },
     ],
     impact: [
-      'Reduced tracking errors by 30% — eliminating the double-bookings and lost equipment incidents that plagued the paper system',
-      'Eliminated manual reconciliation entirely — staff now spend time on service, not spreadsheet cleanup',
-      'Admin visibility into overdue loans improved equipment recovery rate and staff accountability across the institution',
+      'Replaced paper-based tracking with a structured digital workflow — eliminating lost equipment incidents and double-bookings entirely',
+      'Role-based UI meant staff could use the system from day one with no training — each user type sees only what they need to act on',
+      'Excel import + CSV export met real administrative workflows without requiring technical knowledge from the operations team',
+      'Built for Georgia State University\'s IT Services — a real production deployment, not a prototype',
     ],
     learned: {
       technical: [
-        'Database schema design for operational tracking — normalization tradeoffs between query performance and update simplicity',
-        'REST API design for CRUD-heavy operational tools — endpoint naming, status codes, and consistent error handling',
-        'Session management in Flask for role-based access without a heavy auth framework',
+        'JWT implementation with role-based authorization enforced at both the API route and React component level',
+        'Designing a REST API for a multi-step state machine (request → approve/deny → return) with clean, irreversible transitions',
+        'SQLite schema design for audit-friendly queries — tracking state changes, timestamps, and attribution at every step',
+        'React component architecture with strong separation between role-specific views and shared UI primitives',
       ],
       product: [
-        'Operational tools have different UX requirements than consumer apps — speed and clarity matter more than aesthetics',
-        'The most-used admin feature (audit trail) was an afterthought in the initial design — real workflows reveal priorities that wireframes miss',
-        'Shadowing staff before writing a line of code completely changed the data model — designing for real workflows, not assumed ones',
+        'Operational tools need to be immediately intuitive for non-technical users — UI clarity and speed matter more than feature richness',
+        'The approval workflow was the hardest to design correctly — state transitions need to be explicit, and the wrong UI affordances create real operational errors',
+        'Excel/CSV I/O was scoped late but became the most-used admin feature — real-world data workflows rarely match what you assume during design',
       ],
     },
     access: {
-      privateNote:
-        'This project is in a private repository. Source code is available upon request — reach out via the contact form.',
+      privateNote: 'Private repository — internal use only. Source code available upon request.',
     },
   },
   {
