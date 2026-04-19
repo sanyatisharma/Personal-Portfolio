@@ -368,6 +368,22 @@ body {
 }
 
 /* ============================================================
+   SOLUTION FLOW CALLOUT
+   ============================================================ */
+.cs-solution-flow {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.75rem;
+  background: var(--charcoal);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* ============================================================
    FEATURE CARDS
    ============================================================ */
 .cs-feature-grid {
@@ -408,6 +424,72 @@ body {
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--warm-gray);
+}
+
+/* Featured feature — full-width, gold accent */
+.cs-feature-card--featured {
+  grid-column: 1 / -1;
+  border-color: var(--gold);
+  background: rgba(212, 160, 55, 0.04);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1.25rem;
+  align-items: start;
+}
+
+.cs-feature-card--featured .cs-feature-icon {
+  font-size: 2rem;
+  grid-row: 1 / 3;
+  margin-bottom: 0;
+  padding-top: 0.15rem;
+}
+
+.cs-feature-card--featured .cs-feature-name {
+  font-size: 1.15rem;
+}
+
+.cs-feature-card--featured .cs-feature-desc {
+  font-size: 0.92rem;
+}
+
+/* Hero feature — full-width, highest visual emphasis */
+.cs-feature-card--hero {
+  grid-column: 1 / -1;
+  background: var(--charcoal);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 16px 48px rgba(27, 27, 47, 0.15);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1.5rem;
+  align-items: start;
+}
+
+.cs-feature-card--hero .cs-feature-icon {
+  font-size: 2.5rem;
+  grid-row: 1 / 3;
+  margin-bottom: 0;
+  padding-top: 0.1rem;
+}
+
+.cs-feature-card--hero .cs-feature-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.cs-feature-card--hero .cs-feature-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--warm-gray);
+}
+
+.cs-feature-card--hero:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 24px 64px rgba(27, 27, 47, 0.2);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
@@ -531,6 +613,15 @@ body {
   font-size: 0.75rem;
 }
 
+/* Single-column learned layout */
+.cs-learned-col--full {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 1.75rem;
+  max-width: 100%;
+}
+
 /* ============================================================
    ACCESS CARD
    ============================================================ */
@@ -541,6 +632,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.cs-access-btns {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .cs-github-btn {
@@ -568,6 +665,28 @@ body {
   font-size: 0.92rem;
   color: var(--warm-gray);
   line-height: 1.7;
+}
+
+.cs-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1.5px solid var(--gold);
+  width: fit-content;
+  transition: background 0.25s, color 0.25s;
+}
+
+.cs-demo-btn:hover {
+  background: var(--gold);
+  color: var(--charcoal);
 }
 
 .cs-contact-cta {

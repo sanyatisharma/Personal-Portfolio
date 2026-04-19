@@ -159,6 +159,11 @@ export default function ProjectPage({ params }: Props) {
               <div className="cs-section-rule" />
             </div>
             <p className="cs-prose">{project.solution}</p>
+            {project.solutionFlow && (
+              <div className="cs-solution-flow">
+                {project.solutionFlow}
+              </div>
+            )}
           </section>
 
           {/* ── 04 · FEATURES ── */}
@@ -170,7 +175,14 @@ export default function ProjectPage({ params }: Props) {
             </div>
             <div className="cs-feature-grid">
               {project.features.map((f) => (
-                <div key={f.title} className="cs-feature-card">
+                <div
+                  key={f.title}
+                  className={[
+                    'cs-feature-card',
+                    f.emphasis === 'featured' && 'cs-feature-card--featured',
+                    f.emphasis === 'hero'     && 'cs-feature-card--hero',
+                  ].filter(Boolean).join(' ')}
+                >
                   <span className="cs-feature-icon" aria-hidden="true">{f.icon}</span>
                   <h3 className="cs-feature-name">{f.title}</h3>
                   <p className="cs-feature-desc">{f.description}</p>
@@ -221,24 +233,34 @@ export default function ProjectPage({ params }: Props) {
               <h2 className="cs-section-title">What I Learned</h2>
               <div className="cs-section-rule" />
             </div>
-            <div className="cs-learned-grid">
-              <div className="cs-learned-col">
-                <div className="cs-learned-label">Technical</div>
+            {project.learned.product.length > 0 ? (
+              <div className="cs-learned-grid">
+                <div className="cs-learned-col">
+                  <div className="cs-learned-label">Technical</div>
+                  <ul className="cs-learned-list">
+                    {project.learned.technical.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="cs-learned-col">
+                  <div className="cs-learned-label">Product Thinking</div>
+                  <ul className="cs-learned-list">
+                    {project.learned.product.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <div className="cs-learned-col cs-learned-col--full">
                 <ul className="cs-learned-list">
                   {project.learned.technical.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>
-              <div className="cs-learned-col">
-                <div className="cs-learned-label">Product Thinking</div>
-                <ul className="cs-learned-list">
-                  {project.learned.product.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            )}
           </section>
 
           {/* ── 08 · ACCESS ── */}
@@ -249,19 +271,34 @@ export default function ProjectPage({ params }: Props) {
               <div className="cs-section-rule" />
             </div>
             <div className="cs-access-card">
-              {project.access.github && (
-                <a
-                  href={project.access.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cs-github-btn"
-                >
-                  View on GitHub
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              )}
+              <div className="cs-access-btns">
+                {project.access.github && (
+                  <a
+                    href={project.access.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cs-github-btn"
+                  >
+                    View on GitHub
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                )}
+                {project.access.demoUrl && (
+                  <a
+                    href={project.access.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cs-demo-btn"
+                  >
+                    Watch Demo
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
               {project.access.privateNote && (
                 <p className="cs-access-note">{project.access.privateNote}</p>
               )}

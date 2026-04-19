@@ -2,6 +2,7 @@ export interface Feature {
   title: string
   description: string
   icon: string
+  emphasis?: 'featured' | 'hero'  // featured = full-width highlight, hero = highest emphasis
 }
 
 export type StackCategory =
@@ -23,15 +24,16 @@ export interface Project {
   name: string
   type: string
   tagline: string
-  videoId?: string          // YouTube video ID (e.g. "FMfKwNMo59U")
+  videoId?: string           // YouTube video ID (e.g. "FMfKwNMo59U")
   overview: string
   problem: string[]
   solution: string
+  solutionFlow?: string      // Short emphasized callout line e.g. "One input → Multiple outputs → Better retention"
   features: Feature[]
   stack: StackItem[]
   impact: string[]
-  learned: { technical: string[]; product: string[] }
-  access: { github?: string; privateNote?: string }
+  learned: { technical: string[]; product: string[] }  // product: [] for single-column layout
+  access: { github?: string; privateNote?: string; demoUrl?: string }
 }
 
 export const projects: Project[] = [
@@ -42,84 +44,72 @@ export const projects: Project[] = [
     tagline: 'Listen, Revise, Retain.',
     videoId: 'FMfKwNMo59U',
     overview:
-      'PrepareUp is an AI-integrated study platform built by students, for students. Upload your notes or connect your class Discord — then choose how you want to learn: podcast, flashcards, quiz, study guide, or a live AI voice tutor. One set of content generates every format simultaneously. No switching between tools, no re-uploading. Built with OpenAI, React, Flask, and AWS, PrepareUp adapts study to the way you actually learn.',
+      'PrepareUp is an AI-driven web application that converts course materials and Discord discussions into structured, digestible study materials. Built with a GPT-4 powered content pipeline, it maps raw input to multiple learning formats and delivers them through a clean, authenticated interface — making exam preparation systematic instead of scattered.',
     problem: [
-      'Students juggle scattered materials across PDFs, slides, and Discord with no unified way to turn them into active study formats',
-      'Passive reading doesn\'t help information stick — students need varied, active review methods that fit into their real schedule',
-      'Existing tools are format-specific: one app for flashcards, another for quizzes, another for summaries — no platform does it all from one upload',
-      'Discord class discussions contain valuable context that disappears into chat history, never making it into study materials',
+      'Overwhelming amounts of unstructured content across slides, notes, and Discord chats with no unified study workflow',
+      'Passive study methods — reading and highlighting — that don\'t improve long-term retention',
+      'Fragmented tools for notes, quizzes, flashcards, and revision that require switching between platforms',
+      'No interactive, personalized learning support grounded in the student\'s own material',
     ],
     solution:
-      'Built a full-stack platform where users upload course files (PDFs, docs, slides) or connect a Discord server and channel. An OpenAI-powered pipeline ingests the content and generates multiple study formats in parallel: a podcast-style audio lesson in host-and-guest format, auto-generated flashcards, adaptive quizzes with scoring and explanations, and Voice Learning — a live AI tutor that answers questions grounded entirely in the user\'s own notes. Everything is accessible from a single dashboard, on any device.',
+      'PrepareUp solves this through a unified AI-powered study pipeline. Upload notes or connect Discord, and the platform automatically processes and structures your content — then generates every learning format simultaneously from a single input.',
+    solutionFlow: 'One input → Multiple outputs → Better retention',
     features: [
       {
-        title: 'Podcast Mode',
+        title: 'Smart Input System',
         description:
-          'Converts notes into a natural host-and-guest audio conversation with a full transcript. Listen during your commute, workout, or anywhere away from a screen.',
-        icon: '🎙️',
-      },
-      {
-        title: 'Voice Learning — AI Tutor',
-        description:
-          'A live voice interface powered by OpenAI. Ask questions, get explanations, and go deeper in real time — all grounded in your own uploaded notes, not generic AI responses.',
-        icon: '🗣️',
-      },
-      {
-        title: 'Flashcard Generator',
-        description:
-          'AI extracts key concepts, definitions, and facts from uploaded content and generates review-ready flashcards instantly — no manual card creation.',
-        icon: '🃏',
-      },
-      {
-        title: 'Mock Quiz & Test Mode',
-        description:
-          'Set the number of questions and difficulty level. Get scored immediately with the correct answers and explanations for every question ready to review.',
-        icon: '✅',
+          'Upload PDFs, docs, and slides in bulk, or connect a Discord server and channel. PrepareUp automatically extracts and prepares content for every study mode — no re-uploading per format.',
+        icon: '📁',
       },
       {
         title: 'Discord Integration',
         description:
-          'Connect a server and channel and PrepareUp pulls in class discussions automatically — turning live conversations and key insights into structured study material.',
+          'Sync class chats instantly. PrepareUp pulls real discussions into study material, converts chats into summaries and key insights, and ensures no important information gets buried in chat history.',
         icon: '💬',
       },
       {
-        title: 'One Upload, Every Format',
+        title: 'Podcast Mode',
         description:
-          'Upload PDFs, docs, and slides in bulk. A single submission generates podcasts, flashcards, quizzes, and study guides simultaneously — no re-uploading per format.',
-        icon: '⚡',
+          'Converts notes into a natural, conversational audio lesson in host-and-guest format — complete with a full transcript. Enables passive learning during your commute, workout, or any moment away from a screen. Makes studying feel like a discussion, not a chore.',
+        icon: '🎙️',
+        emphasis: 'featured',
+      },
+      {
+        title: 'Voice Learning — AI Tutor',
+        description:
+          'The most powerful feature in PrepareUp. A real-time voice interface powered by OpenAI that lets you ask questions and receive explanations instantly — grounded entirely in your own uploaded material, not generic AI responses. Ask follow-ups, go deeper, and get clarity on exactly what you\'re studying. It feels like talking to a professor who has read all your notes.',
+        icon: '🗣️',
+        emphasis: 'hero',
       },
     ],
     stack: [
       { name: 'React', category: 'Frontend' },
       { name: 'Flask', category: 'Backend' },
-      { name: 'Python', category: 'Backend' },
-      { name: 'PostgreSQL', category: 'Database' },
       { name: 'OpenAI API', category: 'AI/ML' },
-      { name: 'AWS', category: 'Cloud' },
+      { name: 'AWS S3', category: 'Cloud' },
+      { name: 'OAuth2', category: 'Backend' },
+      { name: 'PostgreSQL', category: 'Database' },
       { name: 'Discord API', category: 'Backend' },
     ],
     impact: [
-      'One upload generates podcasts, flashcards, quizzes, and a live AI tutor simultaneously — replacing four separate study tools with one platform',
-      'Voice Learning mode delivers real-time, personalized tutoring grounded in the user\'s own content — not generic AI responses',
-      'Discord integration captures class discussion context that would otherwise be lost, turning live conversations into structured study material',
-      'Podcast mode makes studying genuinely portable — lecture content accessible during commutes and daily routines, not just at a desk',
+      'Reduced study time by consolidating notes, quizzes, flashcards, and revision into a single platform',
+      'Unified multiple fragmented tools into one upload → every format workflow',
+      'Enabled both passive (audio) and active (voice interaction) learning from the same content',
+      'Introduced real-time AI tutoring grounded in user content — not generic responses',
     ],
     learned: {
       technical: [
-        'OpenAI API prompt engineering across multiple output formats — different strategies for podcast narration, quiz generation, and flashcard extraction from the same input',
-        'Real-time voice interface architecture: streaming AI responses with low latency while keeping outputs grounded in user-specific context',
-        'Multi-file ingestion pipeline handling PDFs, docs, and slides with consistent normalization before the generation layer',
-        'AWS infrastructure for audio generation, storage, and delivery — managing file lifecycle for generated podcast episodes at scale',
+        'Designing end-to-end AI pipelines from raw input to multiple structured output formats',
+        'Building multi-modal learning systems — audio, text, interactive — from a single content source',
+        'Integrating real-time voice interfaces with LLMs while keeping responses grounded in user-specific context',
+        'Designing intuitive UX for AI-powered applications where the output quality isn\'t always predictable',
+        'Ensuring content structure, consistency, and reliability across diverse input formats (PDFs, docs, Discord threads)',
       ],
-      product: [
-        'Building for real study habits — designing around how students actually study (commutes, last-minute cramming, varied formats) changed every product decision',
-        'Voice Learning was the hardest feature to build and the most differentiated — the highest-complexity features often have the highest user value',
-        '"One upload, multiple formats" sounds simple but required careful architecture to make each output format genuinely good, not just technically functional',
-      ],
+      product: [],
     },
     access: {
-      privateNote:
-        'This project is in a private repository. Source code is available upon request — reach out via the contact form.',
+      privateNote: 'Private repository — source code available upon request.',
+      demoUrl: 'https://youtu.be/FMfKwNMo59U',
     },
   },
   {
