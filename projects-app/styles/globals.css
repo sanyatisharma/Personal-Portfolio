@@ -1,0 +1,638 @@
+/* ============================================================
+   DESIGN TOKENS — matches main portfolio exactly
+   ============================================================ */
+:root {
+  --gold:       #D4A037;
+  --gold-light: #F5E6C4;
+  --coral:      #C75B3F;
+  --charcoal:   #1B1B2F;
+  --slate:      #2D2D44;
+  --cream:      #FDF8F2;
+  --warm-gray:  #A09B93;
+  --light-gray: #E8E4DE;
+  --white:      #FFFFFF;
+
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+
+  --content-max: 740px;
+  --toc-width:   210px;
+  --gap:         4rem;
+}
+
+/* ============================================================
+   RESET + BASE
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold-light);
+  color: var(--charcoal);
+}
+
+/* ============================================================
+   TOP NAV
+   ============================================================ */
+.cs-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(253, 248, 242, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--warm-gray);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.cs-back:hover { color: var(--charcoal); }
+
+.cs-nav-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--warm-gray);
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.cs-hero {
+  background: var(--charcoal);
+  padding: 5rem 3rem 4rem;
+  position: relative;
+}
+
+.cs-hero-inner {
+  max-width: calc(var(--content-max) + var(--toc-width) + var(--gap));
+  margin: 0 auto;
+}
+
+.cs-type-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cs-type-tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.cs-hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+.cs-hero-tagline {
+  font-size: 1.1rem;
+  color: var(--warm-gray);
+  line-height: 1.65;
+  max-width: 580px;
+  margin-bottom: 2.25rem;
+}
+
+.cs-hero-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cs-hero-chip {
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.04em;
+}
+
+.cs-hero-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--coral), transparent);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   BODY LAYOUT — TOC + CONTENT
+   ============================================================ */
+.cs-body {
+  display: flex;
+  gap: var(--gap);
+  max-width: calc(var(--content-max) + var(--toc-width) + var(--gap) + 6rem);
+  margin: 0 auto;
+  padding: 4rem 3rem 6rem;
+  align-items: flex-start;
+}
+
+/* ── TOC ── */
+.cs-toc {
+  width: var(--toc-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: 5rem;
+}
+
+.cs-toc-heading {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--warm-gray);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.cs-toc-link {
+  display: block;
+  padding: 0.45rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--warm-gray);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.cs-toc-link:hover {
+  color: var(--charcoal);
+  border-left-color: var(--gold);
+}
+
+/* ── MAIN CONTENT ── */
+.cs-content {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--content-max);
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+.cs-section {
+  padding-bottom: 4.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.cs-section:last-child { padding-bottom: 0; }
+
+.cs-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cs-section-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.cs-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--charcoal);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.cs-section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--light-gray);
+  min-width: 20px;
+}
+
+/* ============================================================
+   DEMO — VIDEO PLACEHOLDER
+   ============================================================ */
+.cs-video-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--charcoal);
+}
+
+.cs-video-embed {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.cs-video-placeholder {
+  background: var(--charcoal);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--slate);
+}
+
+.cs-play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(212, 160, 55, 0.15);
+  border: 1.5px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.cs-video-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm-gray);
+}
+
+.cs-video-sub {
+  font-size: 0.85rem;
+  color: rgba(160, 155, 147, 0.6);
+  max-width: 360px;
+}
+
+/* ============================================================
+   OVERVIEW + SOLUTION — PROSE
+   ============================================================ */
+.cs-prose {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--charcoal);
+}
+
+/* ============================================================
+   PROBLEM LIST
+   ============================================================ */
+.cs-problem-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cs-problem-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.cs-problem-item:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(27, 27, 47, 0.06);
+}
+
+.cs-problem-idx {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.cs-problem-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+}
+
+/* ============================================================
+   FEATURE CARDS
+   ============================================================ */
+.cs-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cs-feature-card {
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.cs-feature-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 30px rgba(27, 27, 47, 0.07);
+  transform: translateY(-2px);
+}
+
+.cs-feature-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.cs-feature-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--charcoal);
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+.cs-feature-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--warm-gray);
+}
+
+/* ============================================================
+   TECH STACK
+   ============================================================ */
+.cs-stack-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cs-stack-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.cs-stack-cat {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  width: 90px;
+  flex-shrink: 0;
+  padding-top: 0.45rem;
+}
+
+.cs-stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.cs-stack-tag {
+  padding: 0.4rem 0.9rem;
+  background: rgba(212, 160, 55, 0.08);
+  border: 1px solid rgba(212, 160, 55, 0.2);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--charcoal);
+  letter-spacing: 0.03em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cs-stack-tag:hover {
+  background: var(--charcoal);
+  color: var(--cream);
+  border-color: var(--charcoal);
+}
+
+/* ============================================================
+   IMPACT LIST
+   ============================================================ */
+.cs-impact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cs-impact-item {
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(212, 160, 55, 0.05);
+  border-radius: 0 6px 6px 0;
+  font-weight: 500;
+}
+
+/* ============================================================
+   WHAT I LEARNED — 2-COLUMN
+   ============================================================ */
+.cs-learned-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.cs-learned-col {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 1.75rem;
+}
+
+.cs-learned-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.cs-learned-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cs-learned-list li {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--charcoal);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.cs-learned-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--warm-gray);
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   ACCESS CARD
+   ============================================================ */
+.cs-access-card {
+  background: var(--charcoal);
+  border-radius: 10px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cs-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--gold);
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 6px;
+  width: fit-content;
+  transition: background 0.25s, color 0.25s;
+}
+
+.cs-github-btn:hover {
+  background: var(--coral);
+  color: var(--white);
+}
+
+.cs-access-note {
+  font-size: 0.92rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+}
+
+.cs-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.25s;
+}
+
+.cs-contact-cta:hover { color: var(--cream); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.cs-footer {
+  background: var(--charcoal);
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--slate);
+}
+
+.cs-footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--warm-gray);
+  letter-spacing: 0.05em;
+}
+
+.cs-footer-back {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--warm-gray);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.25s;
+}
+
+.cs-footer-back:hover { color: var(--gold); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .cs-toc { display: none; }
+  .cs-body { padding: 3rem 2.5rem 5rem; }
+}
+
+@media (max-width: 768px) {
+  .cs-hero { padding: 4rem 1.5rem 3rem; }
+  .cs-nav { padding: 0.85rem 1.5rem; }
+  .cs-nav-title { display: none; }
+  .cs-body { padding: 2.5rem 1.5rem 4rem; }
+  .cs-feature-grid { grid-template-columns: 1fr; }
+  .cs-learned-grid { grid-template-columns: 1fr; }
+  .cs-stack-group { flex-direction: column; gap: 0.6rem; }
+  .cs-stack-cat { width: auto; padding-top: 0; }
+  .cs-footer { flex-direction: column; gap: 0.75rem; padding: 1.75rem 1.5rem; }
+  .cs-section-title { white-space: normal; }
+}
