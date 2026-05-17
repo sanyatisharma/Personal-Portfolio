@@ -1,0 +1,36 @@
+# Setup/build artifacts — never commit these
+_index_backup.html
+git-setup.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (if you ever add a build step)
+node_modules/
+dist/
+
+# Next.js build cache (NOT the exported output — _next/ and projects/ should be committed)
+projects-app/.next/
+projects-app/out/
+projects-app/node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Temp files
+*.tmp
+*.swp
+*~
